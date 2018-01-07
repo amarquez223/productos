@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <h1>Editar Producto</h1>
+      <%= form_for @product do |p| %>
+        <div class="form-group">
+          <%= p.text_field :name, class: "form-control input-lg", placeholder: "Ingresa el nombre del producto" %>
+        </div>
+        <div class="form-group">
+          <%= p.number_field :price, class: "form-control input-lg", placeholder: "Ingresa el precio del producto" %>
+        </div>
+        <div>
+          <% @categories.each do |cat| %>
+            
+            <% lcl_exists = false %>
+            <% @catpros.each do |cp| %>
+              <% if cp.category_id == cat.id %>
+                <% lcl_exists = true %>
+                <% break %>
+              <% end %>
+            <% end %>
+
+            <%= check_box_tag("catpro[" + cat.id.to_s + "]", 1, lcl_exists) %>
+            <%= label_tag("catpro[" + cat.id.to_s + "]",cat.name) %>
+            <br>
+          <% end %>
+        </div>
+        <div>
+          <%= p.submit "Modificar Producto", class: "btn btn-primary btn-lg btn-block" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

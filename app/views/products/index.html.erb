@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+    	<h1>Products</h1>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+	<div class: "btn btn-primary btn-lg btn-block"> 
+		<%= link_to "Nuevo Producto", new_product_path %> 
+	</div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+    	<table class="table">
+    		<tr>
+    			<th>Nombre</th>
+    			<th>Precio</th>
+    			<th>Categorías</th>
+    		</tr>
+			<% @products.each do |pro| %>
+				<tr>
+					<td><%= pro.name %></td>
+					<td><%= pro.price %></td>
+					<td>
+						<% pro.categories.each do |c| %>
+							<%= c.name %>
+						<% end %>
+					</td>	
+					<td><%= link_to "Editar", edit_product_path(pro) %></td>
+					<td><%= link_to "Eliminar", pro, method: :delete %></td>
+				</tr>
+			<% end %>
+		</table>
+	</div>
+  </div>
+</div>
