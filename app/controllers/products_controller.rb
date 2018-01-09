@@ -16,7 +16,7 @@ class ProductsController < ApplicationController
 
 		if @product.save && create_catpros
 			# commit()
-	    	redirect_to root_path
+	    	redirect_to products_path
 	    else
 	    	# rollback()
 	      	render :new
@@ -47,7 +47,7 @@ class ProductsController < ApplicationController
 
 		# commit()
 		
-		redirect_to root_path
+		redirect_to products_path
 	end
 
 	def destroy
@@ -59,7 +59,7 @@ class ProductsController < ApplicationController
 
 		product.destroy
 
-		redirect_to root_path
+		redirect_to products_path
 	end
 
 	private
